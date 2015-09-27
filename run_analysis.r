@@ -60,26 +60,13 @@ names(subjectData) <- "subject"
 # bind all the data in a single data set
 allData <- cbind(xData, yData, subjectData) 
 
-# Cleaning up the variable names
-colNames <- colnames(allData)
-for (i in 1:length(colNames)) 
-{
-  colNames[i] = gsub("\\()","",colNames[i])
-  colNames[i] = gsub("std","StdDev",colNames[i])
-  colNames[i] = gsub("mean","Mean",colNames[i])
-  colNames[i] = gsub("^(t)","time",colNames[i])
-  colNames[i] = gsub("^(f)","freq",colNames[i])
-  colNames[i] = gsub("([Gg]ravity)","Gravity",colNames[i])
-  colNames[i] = gsub("([Bb]ody[Bb]ody|[Bb]ody)","Body",colNames[i])
-  colNames[i] = gsub("[Gg]yro","Gyro",colNames[i])
-  colNames[i] = gsub("AccMag","AccMagnitude",colNames[i])
-  colNames[i] = gsub("([Bb]odyaccjerkmag)","BodyAccJerkMagnitude",colNames[i])
-  colNames[i] = gsub("JerkMag","JerkMagnitude",colNames[i])
-  colNames[i] = gsub("GyroMag","GyroMagnitude",colNames[i])
-};
-
-# Assigning the descriptive column names to the finalData set
-colnames(allData) = colNames;
+# Cleaning the variable names
+names(allData)<-gsub("^t", "time", names(allData))
+names(allData)<-gsub("^f", "frequency", names(allData))
+names(allData)<-gsub("Acc", "Accelerometer", names(allData))
+names(allData)<-gsub("Gyro", "Gyroscope", names(allData))
+names(allData)<-gsub("Mag", "Magnitude", names(allData))
+names(allData)<-gsub("BodyBody", "Body", names(allData))
 
 # 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
