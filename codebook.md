@@ -13,7 +13,7 @@ The experiments have been carried out with a group of 30 volunteers within an ag
 ## Identifiers
 
 * `subject` - Test Subject ID
-* `activity` - The type of activity performed when the corresponding measurements were taken
+* `activity` - The activity performed when the measurements were taken
 
 ## Measurements
 
